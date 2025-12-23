@@ -1,13 +1,11 @@
 import footerVermeer from '@/assets/footer-vermeer.jpg';
-
 const Footer = () => {
-  return (
-    <footer className="bg-charcoal text-warm-white">
+  return <footer className="bg-charcoal text-warm-white">
       <div className="max-w-7xl mx-auto px-6 py-12 md:py-16">
         <div className="grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-12">
           {/* Navigation Column */}
           <div className="col-span-1 md:col-span-2">
-            <h4 className="text-xs font-sans font-medium tracking-[0.1em] uppercase text-warm-white/60 mb-4">
+            <h4 className="text-xs font-sans font-medium tracking-widest uppercase text-warm-white/60 mb-4">
               Navigation
             </h4>
             <ul className="space-y-2">
@@ -36,7 +34,7 @@ const Footer = () => {
 
           {/* About Column */}
           <div className="col-span-1 md:col-span-2">
-            <h4 className="text-xs font-sans font-medium tracking-[0.1em] uppercase text-warm-white/60 mb-4">
+            <h4 className="text-xs font-sans font-medium tracking-widest uppercase text-warm-white/60 mb-4">
               About
             </h4>
             <ul className="space-y-2">
@@ -65,7 +63,7 @@ const Footer = () => {
 
           {/* Connect Column */}
           <div className="col-span-2 md:col-span-2">
-            <h4 className="text-xs font-sans font-medium tracking-[0.1em] uppercase text-warm-white/60 mb-4">
+            <h4 className="text-xs font-sans font-medium tracking-widest uppercase text-warm-white/60 mb-4">
               Connect With Us
             </h4>
             <ul className="space-y-2">
@@ -99,20 +97,13 @@ const Footer = () => {
           <div className="col-span-2 md:col-span-4 flex flex-col items-end justify-between">
             <div className="flex items-end gap-4">
               <div className="w-24 h-32 md:w-32 md:h-40 overflow-hidden">
-                <img
-                  src={footerVermeer}
-                  alt="Vermeer style portrait"
-                  className="w-full h-full object-cover"
-                />
+                <img alt="Vermeer style portrait" className="w-full h-full object-cover" src="/lovable-uploads/43b96dc9-edd4-4990-bdb6-0f6e39aab1f2.png" />
               </div>
               <div className="text-right">
                 <p className="font-display italic text-lg md:text-xl text-warm-white leading-relaxed mb-2">
                   All systems are<br />functioning normally
                 </p>
-                <a 
-                  href="#" 
-                  className="text-xs font-sans text-primary hover:text-burnt-orange-light transition-colors inline-flex items-center gap-1"
-                >
+                <a href="#" className="text-xs font-sans text-primary hover:text-burnt-orange-light transition-colors inline-flex items-center gap-1">
                   Check back later for updates
                   <span>→</span>
                 </a>
@@ -128,8 +119,6 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
