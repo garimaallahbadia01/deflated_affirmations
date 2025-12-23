@@ -3,6 +3,8 @@ import { ArrowLeft, ArrowRight, RotateCw } from 'lucide-react';
 import cardSunflower from '@/assets/card-sunflower.png';
 import cardMirror from '@/assets/card-mirror.png';
 import cardWine from '@/assets/card-wine.png';
+import cardHeadphones from '@/assets/card-headphones.png';
+import cardBus from '@/assets/card-bus.png';
 interface Card {
   id: number;
   frontImage: string;
@@ -20,6 +22,14 @@ const cards: Card[] = [{
   id: 3,
   frontImage: cardWine,
   backText: "Wine helps. But not that much."
+}, {
+  id: 4,
+  frontImage: cardHeadphones,
+  backText: "The podcast won't fix you. But at least you'll feel productive."
+}, {
+  id: 5,
+  frontImage: cardBus,
+  backText: "You missed the bus. Again. It's a metaphor."
 }];
 const CardCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -84,7 +94,7 @@ const CardCarousel = () => {
           </button>
 
           {/* Cards */}
-          <div className="relative w-52 md:w-64">
+          <div className="relative w-72 md:w-80 lg:w-96">
             {cards.map((card, index) => <div key={card.id} className="absolute inset-0 transition-all duration-500 ease-out perspective-1000" style={getCardStyle(index)}>
                 <div className={`relative w-full preserve-3d transition-transform duration-700 ${flippedCards.has(index) ? 'rotate-y-180' : ''}`}>
                   {/* Front */}
