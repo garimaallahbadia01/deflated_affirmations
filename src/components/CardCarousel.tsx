@@ -91,11 +91,20 @@ const CardCarousel = () => {
 
           {/* Cards */}
           <div className="relative w-72 md:w-80 lg:w-96 mx-16 md:mx-24 lg:mx-32">
-            {cards.map((card, index) => <div key={card.id} className="transition-all duration-500 ease-out perspective-1000" style={{
-              ...getCardStyle(index),
-              position: index === currentIndex ? 'relative' : 'absolute',
-              inset: index === currentIndex ? undefined : 0
-            }}>
+            {cards.map((card, index) => <div 
+              key={card.id} 
+              className="transition-all duration-500 ease-out perspective-1000 cursor-pointer" 
+              style={{
+                ...getCardStyle(index),
+                position: index === currentIndex ? 'relative' : 'absolute',
+                inset: index === currentIndex ? undefined : 0
+              }}
+              onClick={() => {
+                if (index === currentIndex) {
+                  flipCard();
+                }
+              }}
+            >
                 <div className={`relative w-full preserve-3d transition-transform duration-700 ${flippedCards.has(index) ? 'rotate-y-180' : ''}`}>
                   {/* Front */}
                   <div className="backface-hidden rounded-xl overflow-hidden shadow-2xl">
