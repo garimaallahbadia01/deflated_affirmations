@@ -21,7 +21,7 @@ const Newsletter = () => {
           </div>
 
           {/* Center Content */}
-          <div className="lg:col-span-5 bg-cream-dark p-8 md:p-12 flex flex-col justify-center">
+          <div className="lg:col-span-4 bg-cream-dark p-8 md:p-12 flex flex-col justify-center">
             <h2 className="font-display italic text-2xl md:text-3xl text-foreground leading-relaxed mb-4">
               The ancients foretold<br />thy struggles
             </h2>
