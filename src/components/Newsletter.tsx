@@ -3,6 +3,7 @@ import { toast } from 'sonner';
 import newsletterAngels from '@/assets/newsletter-angels.png';
 import newsletterLandscape from '@/assets/newsletter-landscape.png';
 import logoWhite from '@/assets/logo-white.png';
+
 const Newsletter = () => {
   const [email, setEmail] = useState('');
   const handleSubmit = (e: React.FormEvent) => {
