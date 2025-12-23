@@ -3,10 +3,8 @@ import { toast } from 'sonner';
 import newsletterAngels from '@/assets/newsletter-angels.png';
 import newsletterLandscape from '@/assets/newsletter-landscape.png';
 import footerVermeer from '@/assets/footer-vermeer.jpg';
-
 const Newsletter = () => {
   const [email, setEmail] = useState('');
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
@@ -14,18 +12,12 @@ const Newsletter = () => {
       setEmail('');
     }
   };
-
-  return (
-    <section className="py-16 md:py-24 px-6 bg-background">
+  return <section className="py-16 md:py-24 px-6 bg-background">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
           {/* Left Image */}
           <div className="hidden lg:block lg:col-span-3">
-            <img
-              src={newsletterAngels}
-              alt="Angels with laptop"
-              className="w-full h-full object-cover"
-            />
+            <img src={newsletterAngels} alt="Angels with laptop" className="w-full h-full object-cover" />
           </div>
 
           {/* Center Content */}
@@ -42,18 +34,8 @@ const Newsletter = () => {
                 Enter Email
               </label>
               <div className="flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="receive daily disappointments"
-                  className="flex-1 px-4 py-3 bg-background border border-border text-sm font-sans placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="px-6 py-3 bg-primary text-primary-foreground text-sm font-sans font-medium tracking-wider uppercase hover:bg-burnt-orange-dark transition-colors duration-300"
-                >
+                <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="receive daily disappointments" className="flex-1 px-4 py-3 bg-background border border-border text-sm font-sans placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" required />
+                <button type="submit" className="px-6 py-3 bg-primary text-primary-foreground text-sm font-sans font-medium tracking-wider uppercase hover:bg-burnt-orange-dark transition-colors duration-300">
                   Subscribe
                 </button>
               </div>
@@ -62,19 +44,11 @@ const Newsletter = () => {
 
           {/* Right Image with Overlay */}
           <div className="lg:col-span-4 relative min-h-[300px]">
-            <img
-              src={newsletterLandscape}
-              alt="Renaissance landscape"
-              className="w-full h-full object-cover"
-            />
+            <img src={newsletterLandscape} alt="Renaissance landscape" className="w-full h-full object-cover" />
             <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
               {/* Small portrait image */}
               <div className="absolute top-6 left-6 w-16 h-16 rounded-sm overflow-hidden border-2 border-warm-white/20">
-                <img
-                  src={footerVermeer}
-                  alt="Portrait"
-                  className="w-full h-full object-cover"
-                />
+                
               </div>
 
               <p className="text-xs font-sans tracking-widest uppercase text-warm-white/80 mb-2">
@@ -87,8 +61,6 @@ const Newsletter = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Newsletter;
