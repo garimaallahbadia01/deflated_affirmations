@@ -84,12 +84,12 @@ const CardCarousel = () => {
           </button>
 
           {/* Cards */}
-          <div className="relative w-52 md:w-64 h-72 md:h-[420px]">
+          <div className="relative w-52 md:w-64">
             {cards.map((card, index) => <div key={card.id} className="absolute inset-0 transition-all duration-500 ease-out perspective-1000" style={getCardStyle(index)}>
-                <div className={`relative w-full h-full preserve-3d transition-transform duration-700 ${flippedCards.has(index) ? 'rotate-y-180' : ''}`}>
+                <div className={`relative w-full preserve-3d transition-transform duration-700 ${flippedCards.has(index) ? 'rotate-y-180' : ''}`}>
                   {/* Front */}
-                  <div className="absolute inset-0 backface-hidden rounded-xl overflow-hidden shadow-2xl">
-                    <img src={card.frontImage} alt="Affirmation card" className="w-full h-full object-cover" />
+                  <div className="backface-hidden rounded-xl overflow-hidden shadow-2xl">
+                    <img src={card.frontImage} alt="Affirmation card" className="w-full h-auto" />
                   </div>
 
                   {/* Back */}
