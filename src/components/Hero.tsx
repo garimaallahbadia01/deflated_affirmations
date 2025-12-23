@@ -4,7 +4,7 @@ import angelRight from '@/assets/angel-right.png';
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-[70vh] min-h-[500px] overflow-hidden">
+    <section className="relative w-full h-screen min-h-[500px] overflow-hidden">
       {/* Background Sky */}
       <div className="absolute inset-0">
         <img 
@@ -15,7 +15,7 @@ const Hero = () => {
       </div>
 
       {/* Left Angel */}
-      <div className="absolute left-0 bottom-0 w-[35%] md:w-[30%] h-full pointer-events-none">
+      <div className="absolute left-0 bottom-0 w-[40%] md:w-[35%] h-full pointer-events-none">
         <img 
           src={angelLeft} 
           alt="Angel with coffee" 
@@ -24,7 +24,7 @@ const Hero = () => {
       </div>
 
       {/* Right Angel */}
-      <div className="absolute right-0 bottom-0 w-[35%] md:w-[30%] h-full pointer-events-none">
+      <div className="absolute right-0 bottom-0 w-[40%] md:w-[35%] h-full pointer-events-none">
         <img 
           src={angelRight} 
           alt="Angel with scroll" 
