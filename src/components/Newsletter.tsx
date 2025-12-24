@@ -18,7 +18,7 @@ const Newsletter = () => {
       setEmail('');
     }
   };
-  return <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 bg-background">
+  return <section className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 bg-background">
       <div ref={ref} className={`max-w-6xl mx-auto transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="flex flex-col lg:flex-row gap-4 sm:gap-5 lg:gap-6">
           {/* Left Section: Angels + Content */}
