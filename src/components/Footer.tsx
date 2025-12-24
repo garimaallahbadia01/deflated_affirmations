@@ -3,7 +3,7 @@ import footerVermeer from '@/assets/footer-vermeer.jpg';
 const Footer = () => {
   return (
     <footer className="text-warm-white bg-burnt-orange">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12 md:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-14 md:py-16">
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-12 gap-6 sm:gap-4 md:gap-6 lg:gap-8">
           {/* Navigation Column */}
           <div className="col-span-1 sm:col-span-1 md:col-span-2">

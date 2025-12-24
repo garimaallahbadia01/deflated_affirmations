@@ -44,23 +44,29 @@ const cards: Card[] = [{
 const CardCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
-  const getCardStyle = (index: number) => {
+  
+  // Check if we're on mobile (show only 2 cards) or tablet+ (show 3 cards)
+  const getCardStyle = (index: number, isMobile: boolean) => {
     const diff = index - currentIndex;
-    if (diff === 0) {
+    const normalizedDiff = diff === 0 ? 0 : 
+      (diff === -1 || (currentIndex === 0 && index === cards.length - 1)) ? -1 :
+      (diff === 1 || (currentIndex === cards.length - 1 && index === 0)) ? 1 : null;
+
+    if (normalizedDiff === 0) {
       return {
         transform: 'translateX(0) rotate(0deg) scale(0.95)',
         zIndex: 30,
         opacity: 1
       };
-    } else if (diff === -1 || (currentIndex === 0 && index === cards.length - 1)) {
+    } else if (normalizedDiff === -1) {
       return {
-        transform: 'translateX(-62%) rotate(-6deg) scale(0.68)',
+        transform: isMobile ? 'translateX(-55%) rotate(-5deg) scale(0.7)' : 'translateX(-62%) rotate(-6deg) scale(0.68)',
         zIndex: 20,
         opacity: 1
       };
-    } else if (diff === 1 || (currentIndex === cards.length - 1 && index === 0)) {
+    } else if (normalizedDiff === 1) {
       return {
-        transform: 'translateX(62%) rotate(6deg) scale(0.68)',
+        transform: isMobile ? 'translateX(55%) rotate(5deg) scale(0.7)' : 'translateX(62%) rotate(6deg) scale(0.68)',
         zIndex: 20,
         opacity: 1
       };
@@ -92,8 +98,11 @@ const CardCarousel = () => {
   };
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
 
+  // Check window width for mobile detection
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+
   return (
-    <section className="py-10 sm:py-16 md:py-24 px-4 sm:px-6 bg-background overflow-hidden">
+    <section className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 bg-background overflow-hidden">
       <div
         ref={ref}
         className={`max-w-6xl mx-auto transition-all duration-700 ease-out ${
@@ -117,7 +126,7 @@ const CardCarousel = () => {
               key={card.id} 
               className="transition-all duration-500 ease-out perspective-1000 cursor-pointer" 
               style={{
-                ...getCardStyle(index),
+                ...getCardStyle(index, isMobile),
                 position: index === currentIndex ? 'relative' : 'absolute',
                 inset: index === currentIndex ? undefined : 0
               }}
