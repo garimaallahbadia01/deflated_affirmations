@@ -24,11 +24,11 @@ const Newsletter = () => {
             : 'opacity-0 translate-y-10'
         }`}
       >
-        <div className="flex flex-col md:flex-row gap-4 sm:gap-5 md:gap-6">
+        <div className="flex flex-col lg:flex-row gap-4 sm:gap-5 lg:gap-6">
           {/* Left Section: Angels + Content */}
-          <div className="flex flex-col sm:flex-row md:flex-[1.6] overflow-hidden">
-            {/* Angels Image (always visible; behaves like the mobile reference) */}
-            <div className="relative h-32 sm:h-auto sm:w-[30%] md:w-[35%] lg:w-[40%]">
+          <div className="flex flex-col sm:flex-row lg:flex-[1.6] overflow-hidden">
+            {/* Angels Image (always visible) */}
+            <div className="relative h-32 sm:h-auto sm:w-[30%] md:w-[32%] lg:w-[40%]">
               <img
                 src={newsletterAngels}
                 alt="Angels with laptop"
@@ -71,9 +71,9 @@ const Newsletter = () => {
             </div>
           </div>
 
-          {/* Right Image with Overlay (not oversized on tablet) */}
-          <div className="md:w-[32%] lg:w-[25%] relative overflow-hidden rounded-md bg-muted">
-            <div className="aspect-[4/3] md:aspect-[3/4]">
+          {/* Right Image with Overlay - stacks below on mobile/tablet, side-by-side on lg+ */}
+          <div className="w-full lg:w-[25%] relative overflow-hidden rounded-md bg-muted">
+            <div className="h-28 sm:h-32 md:h-36 lg:h-full lg:min-h-[220px]">
               <img
                 src={newsletterLandscape}
                 alt="Renaissance landscape"
@@ -81,11 +81,11 @@ const Newsletter = () => {
                 draggable={false}
               />
             </div>
-            <div className="absolute inset-0 flex flex-col justify-end p-3 sm:p-4 md:p-5 lg:p-6">
-              <p className="text-[9px] sm:text-[10px] md:text-xs font-sans tracking-widest uppercase text-warm-white/80 mb-1">
+            <div className="absolute inset-0 flex flex-col justify-end p-3 sm:p-4 lg:p-6">
+              <p className="text-[9px] sm:text-[10px] md:text-xs font-sans tracking-widest uppercase text-warm-white/80 mb-0.5 sm:mb-1">
                 Deflated Affirmations
               </p>
-              <p className="font-display italic text-sm sm:text-base md:text-lg lg:text-xl text-warm-white leading-snug">
+              <p className="font-display italic text-sm sm:text-base lg:text-xl text-warm-white leading-snug">
                 We are all just doing our mediocre best.
               </p>
             </div>
