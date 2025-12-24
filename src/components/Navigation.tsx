@@ -1,9 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import logo from '@/assets/logo.png';
+
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  return <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/50">
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  // Handle body scroll lock when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
+  const handleOpenMenu = () => {
+    setIsMenuOpen(true);
+    setIsAnimating(true);
+  };
+
+  const handleCloseMenu = () => {
+    setIsAnimating(false);
+    setTimeout(() => setIsMenuOpen(false), 300);
+  };
+
+  return (
+    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -30,31 +56,80 @@ const Navigation = () => {
           </button>
 
           {/* Hamburger Menu Button - visible on mobile + tablet */}
-          <button className="lg:hidden p-2 -mr-2" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}>
+          <button 
+            className="lg:hidden p-2 -mr-2 z-[60]" 
+            onClick={isMenuOpen ? handleCloseMenu : handleOpenMenu} 
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          >
             {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
+      </div>
 
-        {/* Mobile/Tablet Menu - full screen overlay */}
-        {isMenuOpen && (
-          <div className="lg:hidden fixed inset-0 top-[52px] sm:top-[60px] z-50 bg-background/98 backdrop-blur-md">
-            <div className="flex flex-col items-center justify-center h-full gap-8">
-              <a href="#merch" onClick={() => setIsMenuOpen(false)} className="text-lg sm:text-xl font-sans tracking-[0.15em] uppercase text-foreground hover:text-burnt-orange transition-colors font-normal">
+      {/* Mobile/Tablet Menu - slide-in panel from right */}
+      {isMenuOpen && (
+        <>
+          {/* Backdrop */}
+          <div 
+            className={`lg:hidden fixed inset-0 bg-charcoal/30 z-40 transition-opacity duration-300 ease-in-out ${
+              isAnimating ? 'opacity-100' : 'opacity-0'
+            }`}
+            onClick={handleCloseMenu}
+          />
+          
+          {/* Panel */}
+          <div 
+            className={`lg:hidden fixed top-0 right-0 h-full w-[75%] max-w-[320px] bg-background z-50 shadow-2xl transition-transform duration-300 ease-in-out ${
+              isAnimating ? 'translate-x-0' : 'translate-x-full'
+            }`}
+          >
+            {/* Close button inside panel */}
+            <div className="flex justify-end p-4 sm:p-6">
+              <button 
+                onClick={handleCloseMenu}
+                className="p-2"
+                aria-label="Close menu"
+              >
+                <X size={24} className="text-foreground" />
+              </button>
+            </div>
+            
+            {/* Menu items */}
+            <div className="flex flex-col px-6 sm:px-8 pt-4 gap-6">
+              <a 
+                href="#merch" 
+                onClick={handleCloseMenu} 
+                className="text-base sm:text-lg font-sans tracking-[0.1em] uppercase text-foreground hover:text-burnt-orange transition-colors font-normal py-2 border-b border-border/30"
+              >
                 Merch
               </a>
-              <a href="#custom-card" onClick={() => setIsMenuOpen(false)} className="text-lg sm:text-xl font-sans tracking-[0.15em] uppercase text-foreground hover:text-burnt-orange transition-colors font-normal">
+              <a 
+                href="#custom-card" 
+                onClick={handleCloseMenu} 
+                className="text-base sm:text-lg font-sans tracking-[0.1em] uppercase text-foreground hover:text-burnt-orange transition-colors font-normal py-2 border-b border-border/30"
+              >
                 Custom Card
               </a>
-              <a href="#about" onClick={() => setIsMenuOpen(false)} className="text-lg sm:text-xl font-sans tracking-[0.15em] uppercase text-foreground hover:text-burnt-orange transition-colors font-normal">
+              <a 
+                href="#about" 
+                onClick={handleCloseMenu} 
+                className="text-base sm:text-lg font-sans tracking-[0.1em] uppercase text-foreground hover:text-burnt-orange transition-colors font-normal py-2 border-b border-border/30"
+              >
                 About
               </a>
-              <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-lg sm:text-xl font-sans tracking-[0.15em] uppercase text-foreground hover:text-burnt-orange transition-colors font-normal">
+              <a 
+                href="#contact" 
+                onClick={handleCloseMenu} 
+                className="text-base sm:text-lg font-sans tracking-[0.1em] uppercase text-foreground hover:text-burnt-orange transition-colors font-normal py-2"
+              >
                 Contact Us
               </a>
             </div>
           </div>
-        )}
-      </div>
-    </nav>;
+        </>
+      )}
+    </nav>
+  );
 };
+
 export default Navigation;
