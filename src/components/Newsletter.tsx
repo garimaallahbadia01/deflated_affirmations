@@ -51,10 +51,10 @@ const Newsletter = () => {
                 
               </div>
 
-              <p className="text-xs font-sans tracking-widest uppercase text-warm-white/80 mb-2">
+              <p className="text-xs font-sans tracking-widest uppercase text-warm-white/80">
                 Deflated Affirmations
               </p>
-              <p className="font-display italic text-xl md:text-2xl text-warm-white leading-relaxed">
+              <p className="font-display italic text-xl md:text-2xl text-warm-white leading-relaxed mt-6">
                 We are all just doing our mediocre best.
               </p>
             </div>
