@@ -40,13 +40,13 @@ const Hero = () => {
         />
       </div>
 
-      {/* Left Angel - slides in from left on load, floats gently */}
+      {/* Left Angel - positioned at left edge, vertically centered */}
       <div 
-        className={`absolute left-0 top-1/2 h-[55%] sm:h-[60%] md:h-[70%] lg:h-[85%] xl:h-[90%] pointer-events-none ${
+        className={`absolute left-0 top-[15%] sm:top-[10%] md:top-[8%] lg:top-[5%] h-[70%] sm:h-[75%] md:h-[80%] lg:h-[90%] xl:h-[95%] pointer-events-none ${
           isLoaded ? 'animate-slide-in-left' : 'opacity-0'
         }`}
         style={{ 
-          transform: `translateY(calc(-50% + ${scrollY * 0.08}px))`,
+          transform: `translateY(${scrollY * 0.08}px)`,
         }}
       >
         <img 
@@ -58,13 +58,13 @@ const Hero = () => {
         />
       </div>
 
-      {/* Right Angel - slides in from right on load, floats gently (delayed) */}
+      {/* Right Angel - positioned at right edge, vertically centered */}
       <div 
-        className={`absolute right-0 top-1/2 h-[55%] sm:h-[60%] md:h-[70%] lg:h-[85%] xl:h-[90%] pointer-events-none ${
+        className={`absolute right-0 top-[15%] sm:top-[10%] md:top-[8%] lg:top-[5%] h-[70%] sm:h-[75%] md:h-[80%] lg:h-[90%] xl:h-[95%] pointer-events-none ${
           isLoaded ? 'animate-slide-in-right animation-delay-200' : 'opacity-0'
         }`}
         style={{ 
-          transform: `translateY(calc(-50% + ${scrollY * 0.08}px))`,
+          transform: `translateY(${scrollY * 0.08}px)`,
         }}
       >
         <img 
